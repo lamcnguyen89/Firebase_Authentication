@@ -39,7 +39,45 @@ class SignUpViewController: UIViewController {
         Utilities.styleFilledButton(signUpButton)
     }
     
+    // Check the fields and validate if the data is correct. If incorrect, returns an error, otherwise returns nil.
+    func validateFields() -> String? {
+        
+        // Check that all fields are filled in
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            return "Please fill in all fields"
+        }
+        
+        // Check if password is secure
+        let filteredPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if Utilities.isPasswordValid(filteredPassword) == false {
+            return "Please make sure password is at least 8 characters, and contains a special characer and number"
+        }
+        
+        
+        return nil
+    }
+    
+    func showError( _ message: String) {
+        errorLabel.text! = message
+        errorLabel.alpha = 1
+    }
+    
     @IBAction func signUpAction(_ sender: Any) {
+        
+        // Validate the fields
+        let error = validateFields()
+        
+        if error != nil {
+            
+            // If error present, display message
+            showError(error!)
+        } else {
+            // Create the user
+        }
+        // Create the user
+        
+        // Transition to the home screen
         
     }
     
