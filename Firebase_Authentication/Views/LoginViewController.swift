@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
        setupElements()
+    }
+    
+    func transitionToHome() {
+        
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
     
     func setupElements() {
@@ -34,6 +43,28 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
+        
+        // TODO: Validate the text fields
+        
+        // Create cleaned versions of email and password
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Sign in the User
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (result, error) in
+            
+            if error != nil {
+                
+                //Can't sign in
+                // When you're referencing things inside a closure, use the "self" keyword to reference things inside the class that the closure is a child of.
+                self.errorLabel.text = error!.localizedDescription
+                self.errorLabel.alpha = 1
+            } else {
+                self.transitionToHome()
+            }
+        }
+        
     }
     
 
