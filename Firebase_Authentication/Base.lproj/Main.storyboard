@@ -230,7 +230,7 @@
         <!--Home View Controller-->
         <scene sceneID="dzk-OQ-Hg4">
             <objects>
-                <viewController id="pjc-Or-qG6" customClass="HomeViewController" customModule="Firebase_Authentication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeView" id="pjc-Or-qG6" customClass="HomeViewController" customModule="Firebase_Authentication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MWu-rv-YjC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

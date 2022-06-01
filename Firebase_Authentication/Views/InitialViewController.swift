@@ -29,7 +29,7 @@ class InitialViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        // Login Stuff is occuring
+        
     }
     
 }
